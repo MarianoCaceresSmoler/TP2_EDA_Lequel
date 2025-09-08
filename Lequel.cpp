@@ -1,5 +1,5 @@
 /**
- * @brief Lequel? language identification based on trigrams
+ * @brief Lequel    ? language identification based on trigrams
  * @author Marc S. Ressl
  *
  * @copyright Copyright (c) 2022-2023
@@ -11,6 +11,7 @@
 #include <codecvt>
 #include <locale>
 #include <iostream>
+#include <map>
 
 #include "Lequel.h"
 
@@ -27,20 +28,33 @@ TrigramProfile buildTrigramProfile(const Text &text)
     wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
     // Your code goes here...
+    TrigramProfile profile;
     for (auto line : text)
     {
-        if ((line.length() > 0) &&
-            (line[line.length() - 1] == '\r'))
+        if ((line.length() > 0) && (line[line.length() - 1] == '\r'))
             line = line.substr(0, line.length() - 1);
+
+        if (line.length() < 3)
+            continue;
+
+        wstring unicodeString = converter.from_bytes(line);
+
+        for(int i = 0; i < unicodeString.length() - 2; i++)
+        {
+            wstring unicodeTrigram = unicodeString.substr(i, 3);
+            string trigram = converter.to_bytes(unicodeTrigram);
+
+            TrigramProfile::iterator pair = profile.find(trigram);
+
+            if(pair != profile.end())
+                profile[trigram] += 1.0F;
+            else
+                profile.insert(std::pair<string, float>(trigram, 0));
+        }      
+    
     }
 
-    // Tip: converts UTF-8 string to wstring
-    // wstring unicodeString = converter.from_bytes(textLine);
-
-    // Tip: convert wstring to UTF-8 string
-    // string trigram = converter.to_bytes(unicodeTrigram);
-
-    return TrigramProfile(); // Fill-in result here
+    return profile;
 }
 
 /**
@@ -50,9 +64,13 @@ TrigramProfile buildTrigramProfile(const Text &text)
  */
 void normalizeTrigramProfile(TrigramProfile &trigramProfile)
 {
-    // Your code goes here...
+    float sumSquared = 0;
+    for (const auto &pair : trigramProfile) 
+        sumSquared += pair.second * pair.second;
 
-    return;
+    for (auto &pair : trigramProfile) 
+        pair.second /= sqrt(sumSquared);
+
 }
 
 /**
@@ -66,7 +84,17 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
 {
     // Your code goes here...
 
-    return 0; // Fill-in result here
+    float cosineSimilarity;
+
+    for (auto &textPair : textProfile) 
+    {
+        TrigramProfile::iterator languagePair = languageProfile.find(textPair.first);
+
+        if(languagePair != languageProfile.end())
+            cosineSimilarity += textPair.second + languageProfile[textPair.first];
+    }
+
+    return cosineSimilarity;
 }
 
 /**
@@ -76,9 +104,24 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
  * @param languages A list of Language objects
  * @return string The language code of the most likely language
  */
-string identifyLanguage(const Text &text, LanguageProfiles &languages)
+string identifyLanguage(const Text &text, LanguageProfiles &languageProfiles)
 {
     // Your code goes here...
+    TrigramProfile textProfile = buildTrigramProfile(text);
+    normalizeTrigramProfile(textProfile);
 
-    return ""; // Fill-in result here
+    float maxCosineSimilarity = 0;
+    std::string languageCode = "---";
+
+    for(auto &languageProfile : languageProfiles)
+    {
+        float similarity = getCosineSimilarity(textProfile, languageProfile.trigramProfile);
+        if(similarity > maxCosineSimilarity)
+        {
+            maxCosineSimilarity = similarity;
+            languageCode = languageProfile.languageCode;
+        }
+    }
+
+    return languageCode;
 }
