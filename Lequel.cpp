@@ -49,7 +49,8 @@ TrigramProfile buildTrigramProfile(const Text &text)
             if(pair != profile.end())
                 profile[trigram] += 1.0F;
             else
-                profile.insert(std::pair<string, float>(trigram, 0));
+                profile.insert(std::pair<string, float>(trigram, 1));
+
         }      
     
     }
@@ -69,7 +70,7 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
         sumSquared += pair.second * pair.second;
 
     for (auto &pair : trigramProfile) 
-        pair.second /= sqrt(sumSquared);
+        pair.second = pair.second / sqrt(sumSquared);
 
 }
 
@@ -84,14 +85,14 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
 {
     // Your code goes here...
 
-    float cosineSimilarity;
+    float cosineSimilarity = 0;
 
     for (auto &textPair : textProfile) 
     {
         TrigramProfile::iterator languagePair = languageProfile.find(textPair.first);
 
         if(languagePair != languageProfile.end())
-            cosineSimilarity += textPair.second + languageProfile[textPair.first];
+            cosineSimilarity += textPair.second * languageProfile[textPair.first];
     }
 
     return cosineSimilarity;
