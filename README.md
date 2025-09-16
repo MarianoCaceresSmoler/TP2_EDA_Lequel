@@ -2,76 +2,72 @@
 
 ## Integrantes del grupo y contribución al trabajo de cada integrante
 
-* [Nombre]: [contribución]
+* Mariano Caceres Smoler: [contribución]
+* Sofia Capiel: [contribución]
+
 
 [completar]
 
 ## Respuestas del enunciado
 
-1. ¿En qué idioma está el siguiente texto?
+1. ¿En qué idioma está el siguiente texto? UCRANIANO
 
 історія земель сучасної України, українського народу та інших національностей, що проживають на території України, від доісторичних часів до сьогодення.
 
 
-
-2. ¿En qué idioma está el siguiente texto?
+2. ¿En qué idioma está el siguiente texto? COREANO
 
 아리랑, 아리랑, 아라리요... 아리랑 고개로 넘어간다. 나를 버리고 가시는 님은 십리도 못가서 발병난다. 청천하늘엔 잔별도 많고, 우리네 가슴엔 희망도 많다. 저기 저 산이 백두산이라지, 동지 섣달에도 꽃만 핀다.
 
 
-
-3. ¿En qué idioma está el siguiente texto?
+3. ¿En qué idioma está el siguiente texto? BIRMANO
 
 ၁၉၄၀ ခုနှစ်တွင် ဗိုလ်ချုပ်အောင်ဆန်းဦးဆောင်သည့် ရဲဘော်သုံးကျိပ်အဖွဲ့ဝင်တို့သည် ဗမာ့လွတ်မြောက်ရေးတပ်မတော် (ဘီအိုင်အေ) ကို တည်ထောင်ခဲ့ကြသည်။[၂၀][၂၀] ရဲဘော်သုံးကျိပ်သည် ဂျပန်နိုင်ငံတွင် စစ်သင်တန်းများတက်ရောက်ခဲ့ကြသည်။[၂၀]
 
 
-
-4. ¿En qué idioma está el siguiente texto?
+4. ¿En qué idioma está el siguiente texto? SUAJILI
 
 Negema wangu binti, mchachefu wa sanati upulike wasiati asa ukanzingatia. Maradhi yamenshika hatta yametimu mwaka sikupata kutamka neno lema kukwambia. Ndoo mbee ujilisi na wino na qaratasi moyoni nina hadithi nimependa kukwambia.
 
 
-
-5. ¿En qué idioma está el siguiente texto?
+5. ¿En qué idioma está el siguiente texto? ARMENIO
 
 Այժմ նա յուր կինտոյի արհեստով ժառանգած Ճանճուր մականունը կցելով յուր հոր՝ Օհանեսի անվան հետ, կոչվում է «Թիֆլիսի պատվավոր քաղաքացի Ճանճուր Իվանիչ»։ Այդ անունով ևս մենք պարտավորվում ենք նրան ծանոթացնել մեր ընթերցողներին։
 
 
-
-6. ¿En qué idioma está el siguiente texto?
+6. ¿En qué idioma está el siguiente texto? TURCO
 
 Belirli bir bölgedeki mevcut hava durumu hava raporu, gelecekte beklenen durumlar ise hava tahmini şeklinde, ilgili meteoroloji otoriteleri tarafından yayımlanır.
 
 
-
-7. ¿En qué idioma está el siguiente texto?
+7. ¿En qué idioma está el siguiente texto? CHEROQUI
 
 ᎤᎵᏍᏔᏴᏗ ᎦᎵᏙᏗ ᏭᎷᏤᎢ, ᎤᏗᏔᎮ ᎦᏁᎲ, ᎤᏲᏏᏍᎩ ᎤᏗᏔᎮ ᎤᏅᏗ ᏃᎴ ᎤᎩᏍᏙᎡ ᏑᎾᎴ ᎠᎩᏍᏗ ᎤᏂᏑᎸᏓ. ᎣᏍᏓ ᏄᎵᏍᏔᏁᎮ ᎤᏩᏌ ᎤᏪᏅᏒ ᎡᏙᎲ. ᎦᏅᏆᎶᏍᏗ ᏭᏴᎮ ᏣᏄᏏ ᏃᎴ ᏣᏁᎳ ᎠᏂᏎᏂᏏ ᏴᎩ, ᎣᏍᏓ ᏄᏩᏁᎴ ᎠᏦᏴ.
 
 
-
-8. ¿En qué idioma está el siguiente texto?
+8. ¿En qué idioma está el siguiente texto? ARABE
 
 ُیعتقد بأن ضابطة في الجیش البریطاني تدعى بریت تشاندي أصبحت أولامرأة من أصول آسیویة ُتكملُ رحلة استكشافیة فردیة عبر .القارة القطبیة الجنوبی  
 
 
-
-9. ¿En qué idioma está el siguiente texto?
+9. ¿En qué idioma está el siguiente texto? GUYARATI
 
 ગુજરાતી સંસ્કૃત ભાષામાંથી વિકસિત થયેલી આધુનિક ઈન્ડો-આર્યન ભાષા છે. પરંપરાગત રીતે ૩ ઐતિહાસિક તબક્કાઓ પ્રમાણે ઈન્ડો-આર્યન ભાષાઓ વચ્ચે ભેદ કરાય છે.
 
 
-
-10. ¿En qué idioma está el siguiente texto?
+10. ¿En qué idioma está el siguiente texto? ITALIANO
 
 Al Seicento appartiene il primo trattato dedicato non ai volgari italiani o a uno o più di tali volgari, ma alla lingua italiana in quanto tale: Delle osservazioni della lingua italiana di Marcantonio Mambelli, detto il Cinonio.
-
 
 
 11. El siguiente texto fue escrito por Robert Burns en escocés. ¿Qué dice Lequel? ¿Qué falla? Justifica por qué ocurre lo que ocurre.
 
 And there's a hand, my trusty fiere! and gie's a hand o' thine! And we’ll tak' a right gude-willie waught, for auld lang syne.
 
+Lequel dice que el texto esta en ingles, no en escoces. Esto se debe a varios razones:
+- En primer lugar, el escocés es una variedad de lengua germánica occidental descendiente del inglés medio temprano; de esta forma, el escocés y el ingles comparten muchas palabras (comohand, there, right, etc.).
+- En segundo lugar, en este fragmento de text hay pocas palabras claramente escocesas (como gude-willie o gie' por ejemplo), en comparacion con las que hay que coinciden con el ingles. Y como los trigramas se forman a partir de secuencias de letras, la mayoría de los trigramas del texto van a coincidir con trigramas frecuentes en inglés.
+- Por ultimo, hay que tener en cuenta la frecuencia de los trigramas en los datasets de cada idioma. El trigrama con mas frecuencia del perfil escoces tiene la misma frecuencia que el trigrama 734 del ingles, para poner en perspectiva. Teniendo esto en cuenta, las palabras del ingles incluidas en el fragmento van a tener mucho mas peso que las presentes que son caracteristicas del escoces.
 
 
 12. El siguiente texto está en inglés. ¿Qué dice Lequel? ¿Qué falla? Justifica por qué ocurre lo que ocurre.
@@ -85,8 +81,17 @@ WE HAD EVERYTHING BEFORE US, WE HAD NOTHING BEFORE US,
 WE WERE ALL GOING DIRECT TO HEAVEN, WE WERE ALL GOING DIRECT THE OTHER WAY
 – IN SHORT, THE PERIOD WAS SO FAR LIKE THE PRESENT PERIOD, THAT SOME OF ITS NOISIEST AUTHORITIES INSISTED ON ITS BEING RECEIVED, FOR GOOD OR FOR EVIL, IN THE SUPERLATIVE DEGREE OF COMPARISON ONLY.
 
+Lequel dice que el texto esta en afrikaans, no en ingles.
+- Como en el caso de ingles y escoces, afrikaans e inglés comparten muchos elementos léxicos y estructurales (como las palabras it, was, etc.).
+- Por otro lado, palabras como IT, WAS, o THE aparecen muchisimas veces en el fragmento, lo que puede inclinar la balanza hacia el perfil de idioma que tenga una mayor frecuencia en esas palabras en particular.
+- Por ultimo, el texto esta en mayusculas, mientras que los perfiles de lenguajes estan en minusculas. El algoritmo implementado no normaliza mayusculas a minusculas, sino que guarda los caracteres tal cual estan en el texto ingresado. Y por esto, el programa terminara generando un perfil de trigramas que no coincide como deberia con los guardados.
 
 
 ## Bonus points
 
-[completar]
+Adicionales:
+- Hacer normalizado de textos de mayuscula a minuscula.
+- Ideas para mejorar complejidad computacional: usar unordered_map en lugar de map - agregar cotas de similitud coseno (para cortar antes el calculo para los perfiles poco similares) - ignorar caracteres poco relevantes (de puntuacion o espacios por ejemplo) - paralelizar la comparacion de perfiles usando threads.
+- Meter algunos lenguajes adicionales (C, geringoso, lunfardo, etc.).
+
+[COMPLETAR]

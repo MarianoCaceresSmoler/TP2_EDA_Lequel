@@ -27,7 +27,6 @@ TrigramProfile buildTrigramProfile(const Text &text)
 {
     wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 
-    // Your code goes here...
     TrigramProfile profile;
     for (auto line : text)
     {
@@ -83,8 +82,6 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
  */
 float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageProfile)
 {
-    // Your code goes here...
-
     float cosineSimilarity = 0;
 
     for (auto &textPair : textProfile) 
@@ -107,7 +104,6 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
  */
 string identifyLanguage(const Text &text, LanguageProfiles &languageProfiles)
 {
-    // Your code goes here...
     TrigramProfile textProfile = buildTrigramProfile(text);
     normalizeTrigramProfile(textProfile);
 
