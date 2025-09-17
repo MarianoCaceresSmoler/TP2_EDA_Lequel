@@ -11,7 +11,7 @@
 #include <codecvt>
 #include <locale>
 #include <iostream>
-#include <map>
+#include <unordered_map>
 
 #include "Lequel.h"
 
@@ -83,14 +83,29 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
 float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageProfile)
 {
     float cosineSimilarity = 0;
+    int commonTrigrams = 0;
+    int processed = 0;
+    const float OVERLAP_THRESHOLD = 0.2f; //Superposicion minima para que se tenga en cuenta 
 
     for (auto &textPair : textProfile) 
     {
+        processed++;
         TrigramProfile::iterator languagePair = languageProfile.find(textPair.first);
 
         if(languagePair != languageProfile.end())
+        {
             cosineSimilarity += textPair.second * languageProfile[textPair.first];
+            commonTrigrams++;
+        }
+        int remaining = textProfile.size() - processed;
+        float maxPossibleOverlap = static_cast<float>(commonTrigrams + remaining) / textProfile.size();
+        if(maxPossibleOverlap < OVERLAP_THRESHOLD)
+        return 0;
     }
+
+    float overlap = static_cast<float>(commonTrigrams) / textProfile.size();
+    if(overlap < OVERLAP_THRESHOLD)
+        return 0;
 
     return cosineSimilarity;
 }
