@@ -108,7 +108,7 @@ int main(int, char *[])
             Text text;
             getTextFromString(clipboard, text);
 
-            languageCode = identifyLanguage(text, languages);
+            languageCode = identifyLanguageThreads(text, languages);
         }
 
         if (IsFileDropped())
@@ -120,7 +120,7 @@ int main(int, char *[])
                 Text text;
                 getTextFromFile(droppedFiles.paths[0], text);
 
-                languageCode = identifyLanguage(text, languages);
+                languageCode = identifyLanguageThreads(text, languages);
 
                 UnloadDroppedFiles(droppedFiles);
             }

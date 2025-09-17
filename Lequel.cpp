@@ -12,6 +12,9 @@
 #include <locale>
 #include <iostream>
 #include <unordered_map>
+#include <thread>
+#include <mutex>
+#include <vector>
 
 #include "Lequel.h"
 
@@ -83,30 +86,16 @@ void normalizeTrigramProfile(TrigramProfile &trigramProfile)
 float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageProfile)
 {
     float cosineSimilarity = 0;
-    int commonTrigrams = 0;
-    int processed = 0;
-    const float OVERLAP_THRESHOLD = 0.2f; //Superposicion minima para que se tenga en cuenta 
 
     for (auto &textPair : textProfile) 
     {
-        processed++;
         TrigramProfile::iterator languagePair = languageProfile.find(textPair.first);
 
         if(languagePair != languageProfile.end())
         {
             cosineSimilarity += textPair.second * languageProfile[textPair.first];
-            commonTrigrams++;
         }
-        int remaining = textProfile.size() - processed;
-        float maxPossibleOverlap = static_cast<float>(commonTrigrams + remaining) / textProfile.size();
-        if(maxPossibleOverlap < OVERLAP_THRESHOLD)
-        return 0;
     }
-
-    float overlap = static_cast<float>(commonTrigrams) / textProfile.size();
-    if(overlap < OVERLAP_THRESHOLD)
-        return 0;
-
     return cosineSimilarity;
 }
 
@@ -134,6 +123,63 @@ string identifyLanguage(const Text &text, LanguageProfiles &languageProfiles)
             languageCode = languageProfile.languageCode;
         }
     }
+
+    return languageCode;
+}
+
+/**
+ * @brief Identifies the language of a text using threads
+ *
+ * @param text A Text (vector of lines)
+ * @param languages A list of Language objects
+ * @return string The language code of the most likely language
+ */
+string identifyLanguageThreads (const Text &text, LanguageProfiles &languageProfiles)
+{
+    TrigramProfile textProfile = buildTrigramProfile(text);
+    normalizeTrigramProfile(textProfile);
+
+    float maxCosineSimilarity = 0;
+    string languageCode = "---";
+    std::mutex mtx;
+
+    auto worker = [&](int start, int end){
+        float localMax = 0;
+        string localLang = "---";
+
+        for(auto &languageProfile : languageProfiles)
+        {
+            float similarity = getCosineSimilarity(textProfile, languageProfile.trigramProfile);
+            std::cout << languageProfile.languageCode << " -> " << similarity << "\n";
+            if(similarity > localMax)
+            {
+                localMax = similarity;
+                localLang = languageProfile.languageCode;
+            }
+        }
+        std::cout << "Final language: " << languageCode << "\n";
+
+        std::lock_guard<std::mutex> lock(mtx);
+        if(localMax > maxCosineSimilarity)
+        {
+            maxCosineSimilarity = localMax;
+            languageCode = localLang;
+        }
+    };
+
+    int numThreads = std::thread::hardware_concurrency(); // detecta los nucleos del cpu
+    int blockSize = (languageProfiles.size() + numThreads - 1) / numThreads;
+
+    std::vector<std::thread> threads;
+    for(int t = 0; t < numThreads; t++)
+    {
+        int start = t * blockSize;
+        int end = std::min(start + blockSize, (int)languageProfiles.size());
+        threads.emplace_back(worker, start, end);
+    }
+
+    for(auto &th : threads)
+        th.join();
 
     return languageCode;
 }
