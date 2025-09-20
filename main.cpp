@@ -12,6 +12,7 @@
 #include "raylib.h"
 
 #include "CSVData.h"
+#include "build_new_profiles.h"
 #include "Lequel.h"
 
 using namespace std;
@@ -35,6 +36,8 @@ bool loadLanguagesData(map<string, string> &languageCodeNames, LanguageProfiles 
     CSVData languageCodesCSVData;
     if (!readCSV(LANGUAGECODE_NAMES_FILE, languageCodesCSVData))
         return false;
+
+    cout << "Filas leídas: " << languageCodesCSVData.size() << endl;
 
     // Reads trigram profile for each language code
     for (auto &fields : languageCodesCSVData)
@@ -79,6 +82,9 @@ int main(int, char *[])
 {
     map<string, string> languageCodeNames;
     LanguageProfiles languages;
+
+    create_corpus("resources/extra_languages/catalan2.txt", "resources/trigrams/cat.csv");
+    create_corpus("resources/extra_languages/C.txt", "resources/trigrams/ccc.csv");
 
     if (!loadLanguagesData(languageCodeNames, languages))
     {

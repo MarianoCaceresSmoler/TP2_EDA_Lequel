@@ -46,6 +46,9 @@ TrigramProfile buildTrigramProfile(const Text &text)
             wstring unicodeTrigram = unicodeString.substr(i, 3);
             string trigram = converter.to_bytes(unicodeTrigram);
 
+            transform(trigram.begin(), trigram.end(), trigram.begin(), [](unsigned char c)
+                      { return tolower(c); }); // lowercase the trigram
+
             TrigramProfile::iterator pair = profile.find(trigram);
 
             if(pair != profile.end())
@@ -89,11 +92,11 @@ float getCosineSimilarity(TrigramProfile &textProfile, TrigramProfile &languageP
 
     for (auto &textPair : textProfile) 
     {
-        TrigramProfile::iterator languagePair = languageProfile.find(textPair.first);
+        auto languagePair = languageProfile.find(textPair.first);
 
-        if(languagePair != languageProfile.end())
+        if (languagePair != languageProfile.end())
         {
-            cosineSimilarity += textPair.second * languageProfile[textPair.first];
+            cosineSimilarity += textPair.second * languagePair->second;
         }
     }
     return cosineSimilarity;
@@ -147,18 +150,16 @@ string identifyLanguageThreads (const Text &text, LanguageProfiles &languageProf
         float localMax = 0;
         string localLang = "---";
 
-        for(auto &languageProfile : languageProfiles)
-        {
+        for (int i = start; i < end; i++) {
+            auto &languageProfile = languageProfiles[i];
             float similarity = getCosineSimilarity(textProfile, languageProfile.trigramProfile);
-            std::cout << languageProfile.languageCode << " -> " << similarity << "\n";
-            if(similarity > localMax)
-            {
+            cout << "Cosine similarity: " << languageProfile.languageCode << " -> " << similarity << "\n";
+
+            if (similarity > localMax) {
                 localMax = similarity;
                 localLang = languageProfile.languageCode;
             }
         }
-        std::cout << "Final language: " << languageCode << "\n";
-
         std::lock_guard<std::mutex> lock(mtx);
         if(localMax > maxCosineSimilarity)
         {

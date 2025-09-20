@@ -28,7 +28,7 @@ struct LanguageProfile
     TrigramProfile trigramProfile;
 };
 
-typedef std::list<LanguageProfile> LanguageProfiles;
+typedef std::vector<LanguageProfile> LanguageProfiles;
 
 // Functions
 TrigramProfile buildTrigramProfile(const Text &text);
