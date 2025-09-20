@@ -13,7 +13,7 @@
 #include <list>
 #include <unordered_map>
 #include <string>
-
+#include <vector>
 #include "Text.h"
 
 // TrigramProfile: map of trigram -> frequency

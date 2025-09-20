@@ -90,7 +90,12 @@ Lequel dice que el texto esta en afrikaans, no en ingles.
 ## Bonus points
 
 Adicionales:
-- Hacer normalizado de textos de mayuscula a minuscula.
+- Hicimos un normalizado de textos a minusculas.
+- Metimos como lenguajes adicionales Catalan y C.
+
+Si el texto a analizar es muy grande, se producirá un cuello de botella computacional.
+¿Cuál es y cómo podría resolverse?
+
 - Ideas para mejorar complejidad computacional: usar unordered_map en lugar de map - agregar cotas de similitud coseno (para cortar antes el calculo para los perfiles poco similares) - ignorar caracteres poco relevantes (de puntuacion o espacios por ejemplo) - paralelizar la comparacion de perfiles usando threads.
 - Meter algunos lenguajes adicionales (C, geringoso, lunfardo, etc.).
 
