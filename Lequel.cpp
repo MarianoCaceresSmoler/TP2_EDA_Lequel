@@ -55,7 +55,7 @@ TrigramProfile buildTrigramProfile(const Text &text)
 
             // Lowercase the trigram
             transform(trigram.begin(), trigram.end(), trigram.begin(), [](unsigned char c)
-                      { return tolower(c); }); 
+                      { return tolower(c); });
 
             // Increment count or insert new trigram
             TrigramProfile::iterator pair = profile.find(trigram);
@@ -199,7 +199,7 @@ string identifyLanguageThreads(const Text &text, LanguageProfiles &languageProfi
             languageCode = localLang;
         }
     };
-    
+
     // Determine how many threads to use
     int numThreads = std::thread::hardware_concurrency();
     int blockSize = (languageProfiles.size() + numThreads - 1) / numThreads;

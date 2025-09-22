@@ -2,11 +2,8 @@
 
 ## Integrantes del grupo y contribución al trabajo de cada integrante
 
-* Mariano Caceres Smoler: [contribución]
-* Sofia Capiel: [contribución]
-
-
-[completar]
+* Mariano Caceres Smoler: armado de codigo base de las funciones, optimizacion del calculo de trigramas y documentacion.
+* Sofia Capiel: implementacion de threads, integracion de nuevos lenguajes y testeo.
 
 ## Respuestas del enunciado
 

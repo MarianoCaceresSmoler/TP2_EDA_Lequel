@@ -1,7 +1,7 @@
 /**
  * @brief Reads text files
  * @author Marc S. Ressl
- * 
+ *
  * @copyright Copyright (c) 2022-2023
  */
 

@@ -1,7 +1,7 @@
 /**
  * @brief Lequel? main module
  * @author Marc S. Ressl
- * 
+ *
  * @copyright Copyright (c) 2022-2023
  */
 
@@ -22,7 +22,7 @@ const string TRIGRAMS_PATH = "resources/trigrams/";
 
 /**
  * @brief Loads trigram data.
- * 
+ *
  * @param languageCodeNames Map of language code vs. language name (in i18n locale).
  * @param languages The trigram profiles.
  * @return true Succeeded
