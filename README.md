@@ -86,17 +86,26 @@ Lequel dice que el texto esta en afrikaans, no en ingles.
 - Por otro lado, palabras como IT, WAS, o THE aparecen muchisimas veces en el fragmento, lo que puede inclinar la balanza hacia el perfil de idioma que tenga una mayor frecuencia en esas palabras en particular.
 - Por ultimo, el texto esta en mayusculas, mientras que los perfiles de lenguajes estan en minusculas. El algoritmo implementado no normaliza mayusculas a minusculas, sino que guarda los caracteres tal cual estan en el texto ingresado. Y por esto, el programa terminara generando un perfil de trigramas que no coincide como deberia con los guardados.
 
+Teniendo este problema en cuenta, decidimos agregar el normalizado de los trigramas a minuscula. Luego de esto, Lequel ahora si dice que el texto esta en ingles.
 
 ## Bonus points
 
-Adicionales:
-- Hicimos un normalizado de textos a minusculas.
-- Metimos como lenguajes adicionales Catalan y C.
+- Hicimos normalizado de textos a minusculas para arreglar el error de cuando ingresas textos en mayusculas.
+- Metimos como lenguajes adicionales: Catalan y C. Los textos con los que cargamos los trigramas para estos lenguajes estan en resources/extra_languages.
 
-Si el texto a analizar es muy grande, se producirá un cuello de botella computacional.
-¿Cuál es y cómo podría resolverse?
+Por otro lado, en cuanto al cuello de botella computacional con textos grandes, notamos que este se produce en la funcion de getCosineSimilarity. Por cada idioma se recorre todo el perfil de trigramas del texto, y por cada trigrama se ejecuta la funcion find de map. Si el texto ingresado es muy grande, entonces el perfil del texto tendra muchisimos trigramas, y con estos crecera el costo del bucle. De esta forma, la complejidad de calculo por cada texto termina siendo 
+O(N x M), siendo N el numero de trigramas del texto y M el numero de lenguajes (que, si bien se mantiene constante, no deja de ser un multiplicador).
 
-- Ideas para mejorar complejidad computacional: usar unordered_map en lugar de map - agregar cotas de similitud coseno (para cortar antes el calculo para los perfiles poco similares) - ignorar caracteres poco relevantes (de puntuacion o espacios por ejemplo) - paralelizar la comparacion de perfiles usando threads.
-- Meter algunos lenguajes adicionales (C, geringoso, lunfardo, etc.).
+Para solucionar este problema implementamos varias optimizaciones:
+- Uso de unordered_map en lugar de map: esto nos da la mayor velocidad de búsqueda posible. Mientras que map tiene una complejidad promedio de O(log n) por busqueda, unordered_map ofrece O(1) en promedio. De esta forma, aceleramos significativamente la comparacion en grandes volúmenes de datos.
+- Limite de trigramas procesados: establecimos un maximo de 2000 trigramas por texto, dado que los perfiles de los lenguajes cargados en resources tambien rondan esa magnitud. Esto evita que textos extremadamente largos inflen el costo de procesamiento sin aportar mejoras sustanciales en la identificacion.
+- Cotas de similitud coseno: en la función getCosineSimilarity, a medida que se comparan trigramas, se calcula el maximo porcentaje de coincidencia posible con los trigramas que faltan por recorrer. Si ese maximo ya es inferior al minimo requerido (20% de coincidencia), el bucle se corta de forma anticipada evitando asi comparaciones innecesarias.
+- Paralelizacion con threads: dividimos los perfiles de lenguajes entre multiples hilos para aprovechar la concurrencia y reducir el tiempo total de comparación.
 
-[COMPLETAR]
+Con estas optimizaciones, la complejidad efectiva deja de ser estrictamente O(N x M). Ahora:
+- El uso de unordered_map reduce la busqueda a O(1) promedio, en lugar de O(log n).
+- El limite de trigramas fija N ≤ 2000, por lo que la comparacion ya no crece indefinidamente con el tamaño del texto.
+- Las cotas permiten que, en la practica, muchos bucles corten de forma temprana.
+- La paralelizacion distribuye el trabajo entre varios nucleos, acercando la complejidad practica a O(N × M / T), donde T es el número de threads disponibles en la maquina.
+
+Asi, el programa paso de una complejidad teorica O(N × M) a una complejidad cercana a O(M × 2000 / T) en el peor caso, teniendo en cuenta los escapes tempranos que en muchas ocasiones reducen aun más el tiempo de ejecución.

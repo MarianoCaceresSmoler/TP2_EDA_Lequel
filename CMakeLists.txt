@@ -15,8 +15,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     add_link_options(-fsanitize=undefined)
 endif()
 
-add_executable(main main.cpp CSVData.cpp Text.cpp Lequel.cpp build_new_profiles.cpp)
-
+add_executable(main main.cpp CSVData.cpp Text.cpp Lequel.cpp BuildNewProfiles.cpp)
 
 # Copy resources folder to build folder
 file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE_INIT})

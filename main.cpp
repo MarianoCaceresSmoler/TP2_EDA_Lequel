@@ -12,7 +12,7 @@
 #include "raylib.h"
 
 #include "CSVData.h"
-#include "build_new_profiles.h"
+#include "BuildNewProfiles.h"
 #include "Lequel.h"
 
 using namespace std;
@@ -83,8 +83,9 @@ int main(int, char *[])
     map<string, string> languageCodeNames;
     LanguageProfiles languages;
 
-    create_corpus("resources/extra_languages/catalan2.txt", "resources/trigrams/cat.csv");
-    create_corpus("resources/extra_languages/C.txt", "resources/trigrams/ccc.csv");
+    // We added these two new languages
+    createLanguage("resources/extra_languages/catalan2.txt", "resources/trigrams/cat.csv");
+    createLanguage("resources/extra_languages/C.txt", "resources/trigrams/ccc.csv");
 
     if (!loadLanguagesData(languageCodeNames, languages))
     {
